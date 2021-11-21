@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
+    'apsis.apps.ApsisConfig',
     'snippets.apps.SnippetsConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
