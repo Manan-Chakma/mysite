@@ -7,6 +7,7 @@ from apsis.serializers import ClientSerializer, MailDropSerializer, MailRecipien
 from .models import *
 from rest_framework import viewsets
 from rest_framework.response import Response
+from django.http.request import HttpRequest
 
 
 class ClientViewSet(viewsets.ViewSet):
@@ -41,13 +42,17 @@ class MailDropViewSet(viewsets.ViewSet):
 
     def list(self, request, client_pk=None):
         queryset = MailDrop.objects.filter(client_id=client_pk)
+        serializer_context = {
+            'request': request
+        }
         serializer = MailDropSerializer(queryset, many=True)
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None, client_pk=None):
         queryset = MailDrop.objects.filter(pk=pk, client_id=client_pk)
         maildrop = get_object_or_404(queryset, pk=pk)
-        serializer = MailDropSerializer(maildrop)
+        serializer = MailDropSerializer(
+            maildrop)
         return Response(serializer.data)
 
 
@@ -64,5 +69,6 @@ class RecipientViewSet(viewsets.ViewSet):
         queryset = MailRecipent.objects.filter(
             client_id=client_pk, mail_drop_id=maildrop_pk)
         mailrecipent = get_object_or_404(queryset, pk=pk)
-        serializer = MailRecipientSerializer(mailrecipent)
+        serializer = MailRecipientSerializer(
+            mailrecipent)
         return Response(serializer.data)

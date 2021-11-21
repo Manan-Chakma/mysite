@@ -28,4 +28,4 @@ class MailRecipientSerializer(NestedHyperlinkedModelSerializer):
 
     class Meta:
         model = MailRecipent
-        fields = ['name', 'client_id', 'mail_drop_id']
+        fields = ['name']
