@@ -14,7 +14,7 @@ client_router = NestedSimpleRouter(router, r'clients', lookup="client")
 client_router.register(r'maildrops', MailDropViewSet, basename='maildrop')
 
 maildrops_router = NestedSimpleRouter(
-    client_router, r'recipients', lookup="maildrop")
+    client_router, r'maildrops', lookup="maildrop")
 maildrops_router.register(
     r'recipients', RecipientViewSet, basename='recipient')
 
