@@ -2,6 +2,8 @@ from django.db.models import fields
 from rest_framework_nested.relations import NestedHyperlinkedIdentityField
 from rest_framework.serializers import HyperlinkedModelSerializer
 from rest_framework_nested.serializers import NestedHyperlinkedModelSerializer
+from rest_framework.serializers import IntegerField
+
 from .models import *
 
 class ClientSerializer(HyperlinkedModelSerializer):
@@ -15,9 +17,12 @@ class MailDropSerializer(NestedHyperlinkedModelSerializer):
         'client_pk': 'client_id',
     }
 
+    client_id = IntegerField(source='client_id.id')
+
+
     class Meta:
         model = MailDrop
-        fields = ['id', 'title']
+        fields = ['id', 'title', 'client_id']
 
 
 class MailRecipientSerializer(NestedHyperlinkedModelSerializer):

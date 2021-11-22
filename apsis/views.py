@@ -45,7 +45,8 @@ class MailDropViewSet(viewsets.ViewSet):
         serializer_context = {
             'request': request
         }
-        serializer = MailDropSerializer(queryset, many=True)
+        serializer = MailDropSerializer(
+            queryset, many=True)
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None, client_pk=None):
