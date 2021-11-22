@@ -3,8 +3,8 @@ from faker import Faker
 
 from apsis.models import Client, MailDrop, MailRecipent
 
-class CreateMailDropFakeDataCommand(BaseCommand):
-    help = "command information"
+class Command(BaseCommand):
+    help = "create maildrop dummy data command"
 
     def handle(self, *args, **options):
         fake = Faker()

@@ -1,11 +1,10 @@
 from django.core.management.base import BaseCommand
 from faker import Faker
-import faker
 
 from apsis.models import Client, MailDrop, MailRecipent
 
-class ClientCreateCommand(BaseCommand):
-    help = "command information"
+class Command(BaseCommand):
+    help = "client create dummy data command"
 
     def handle(self, *args, **options):
         fake = Faker()

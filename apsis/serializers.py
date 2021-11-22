@@ -7,7 +7,7 @@ from .models import *
 class ClientSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Client
-        fields = ['name']
+        fields = ['id', 'name']
 
 
 class MailDropSerializer(NestedHyperlinkedModelSerializer):
@@ -17,7 +17,7 @@ class MailDropSerializer(NestedHyperlinkedModelSerializer):
 
     class Meta:
         model = MailDrop
-        fields = ['title']
+        fields = ['id', 'title']
 
 
 class MailRecipientSerializer(NestedHyperlinkedModelSerializer):
@@ -28,4 +28,4 @@ class MailRecipientSerializer(NestedHyperlinkedModelSerializer):
 
     class Meta:
         model = MailRecipent
-        fields = ['name']
+        fields = ['id', 'name']
